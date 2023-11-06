@@ -20,6 +20,6 @@ class Sqrl < Formula
   end
 
   test do
-    system "#{bin}/sqrl", "--version"
+    system "#{bin}/sqrl"
   end
 end
