@@ -1,12 +1,10 @@
-class Sqrl < Formula
+class SqrlCli < Formula
   desc "A SQRL compiler"
   homepage "https://datasqrl.com"
   url "https://datasqrl-public.s3.amazonaws.com/sqrl-cli.jar"
   version "1"
   sha256 "93e03e83999c50bf6fa283d64c49057e2b5b780927fe7174cd5edc2f2ba5e3ec"
   license ""
-
-  bottle :unneeded
 
   depends_on "openjdk"
 
