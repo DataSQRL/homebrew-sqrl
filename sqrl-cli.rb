@@ -7,13 +7,13 @@ class SqrlCli < Formula
   license ""
 
   depends_on "postgresql"
-  depends_on "openjdk"
+  depends_on "openjdk@11"
 
   def install
     libexec.install "sqrl-cli.jar"
     (bin/"sqrl").write <<~EOS
       #!/bin/bash
-      exec "#{Formula["openjdk"].opt_bin}/java" -jar "#{libexec}/sqrl-cli.jar" "$@"
+      exec "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli.jar" "$@"
     EOS
     (bin/"sqrl").chmod 0755
   end
