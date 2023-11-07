@@ -3,7 +3,7 @@ class SqrlCli < Formula
   homepage "https://datasqrl.com"
   url "https://datasqrl-public.s3.amazonaws.com/sqrl-cli.jar"
   version "1"
-  sha256 "93e03e83999c50bf6fa283d64c49057e2b5b780927fe7174cd5edc2f2ba5e3ec"
+  sha256 "abf34e6ef7b7788ecd3e57c175f677b1575e67d55eb6e8983a79de88cd47901e"
   license ""
 
   depends_on "postgresql"
