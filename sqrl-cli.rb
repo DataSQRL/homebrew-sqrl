@@ -2,7 +2,7 @@ class SqrlCli < Formula
   desc "A SQRL compiler"
   homepage "https://datasqrl.com"
   url "https://datasqrl-public.s3.amazonaws.com/sqrl-cli.jar"
-  version "1"
+  version "0.3.0"
   sha256 "bc31396e88b54b0b3afed67a23128dedf091d51eb1284630823c648beb7125b1"
   license ""
 
