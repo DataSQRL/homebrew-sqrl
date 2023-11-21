@@ -6,7 +6,7 @@ class SqrlCli < Formula
   sha256 "bc31396e88b54b0b3afed67a23128dedf091d51eb1284630823c648beb7125b1"
   license ""
 
-  depends_on "postgresql"
+  depends_on "pgvector"
   depends_on "openjdk@11"
 
   def install
