@@ -10,7 +10,7 @@ class SqrlCli < Formula
   depends_on "openjdk@11"
 
   def install
-    libexec.install "sqrl-cli.jar"
+    libexec.install "sqrl-cli-0.5.0-RC2.jar"
     (bin/"sqrl").write <<~EOS
       #!/bin/bash
       exec "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli.jar" "$@"
