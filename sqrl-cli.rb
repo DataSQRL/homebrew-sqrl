@@ -13,7 +13,7 @@ class SqrlCli < Formula
     libexec.install "sqrl-cli-0.5.0-RC2.jar"
     (bin/"sqrl").write <<~EOS
       #!/bin/bash
-      exec "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli.jar" "$@"
+      exec "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli-0.5.0-RC2.jar" "$@"
     EOS
     (bin/"sqrl").chmod 0755
   end
