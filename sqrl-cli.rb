@@ -1,9 +1,9 @@
 class SqrlCli < Formula
   desc "A SQRL compiler"
   homepage "https://datasqrl.com"
-  url "https://datasqrl-public.s3.amazonaws.com/sqrl-cli.jar"
-  version "0.3.0"
-  sha256 "bc31396e88b54b0b3afed67a23128dedf091d51eb1284630823c648beb7125b1"
+  url "https://datasqrl-public.s3.amazonaws.com/sqrl-cli-0.5.0-RC2.jar"
+  version "0.5.0-RC2"
+  sha256 "2e0f96ec1b3a5bf52d3c8e8bb9f41a8600ebd4764fc324afe935cb4c9a7fd3bf"
   license ""
 
   depends_on "pgvector"
