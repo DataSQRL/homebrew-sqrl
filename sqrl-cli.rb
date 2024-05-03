@@ -3,7 +3,7 @@ class SqrlCli < Formula
   homepage "https://datasqrl.com"
   url "https://sqrl-cli.s3.amazonaws.com/sqrl-cli.jar"
   version "0.5.0-RC2"
-  sha256 "5eb6e1410a287e8b1a7755279cc0e2d7a7c88b7122a9fdda54e0918caa5337e9"
+  sha256 "203b03b3a7ee0f5dfbafc45019601eabeea6e93449fbf308272eea63c5a46bfc"
   license ""
 
   depends_on "pgvector"
