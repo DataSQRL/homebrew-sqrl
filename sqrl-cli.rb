@@ -9,11 +9,13 @@ class SqrlCli < Formula
   depends_on "openjdk@11"
 
   def install
-    libexec.install "sqrl-cli-v#{version}.zip"
-    system "unzip", "#{libexec}/sqrl-cli-v#{version}.zip"
+    libexec.mkpath
+    system "unzip", cached_download, "-d", libexec
 
-    libexec.install "sqrl-cli.jar"
-    libexec.install "sqrl-run.jar"
+    # Verify that the necessary files are present
+    unless File.exist?("#{libexec}/sqrl-cli.jar") && File.exist?("#{libexec}/sqrl-run.jar")
+      odie "Missing expected files in the zip"
+    end
 
     (bin/"sqrl").write <<~EOS
       #!/bin/bash
