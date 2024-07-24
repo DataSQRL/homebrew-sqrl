@@ -9,6 +9,7 @@ class SqrlCli < Formula
   depends_on "openjdk@11"
 
   def install
+    libexec.install "sqrl-cli-v#{version}.zip"
     system "unzip", "#{libexec}/sqrl-cli-v#{version}.zip"
 
     libexec.install "sqrl-cli.jar"
