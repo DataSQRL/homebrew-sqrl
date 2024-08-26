@@ -20,11 +20,13 @@ class SqrlCli < Formula
     (bin/"sqrl").write <<~EOS
       #!/bin/bash
 
+      JVM_OPTS="${JVM_OPTS:-}"
+
       "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli.jar" "$@"
       status=$?
 
       if [ "$1" = "run" ] && [ $status -eq 0 ]; then
-          exec "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-run.jar" "${@:2}"
+          exec "#{Formula["openjdk@11"].opt_bin}/java" $JVM_OPTS -jar "#{libexec}/sqrl-run.jar" "${@:2}"
       fi
     EOS
 
