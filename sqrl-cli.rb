@@ -1,9 +1,9 @@
 class SqrlCli < Formula
   desc "A SQRL compiler"
   homepage "https://datasqrl.com"
-  url "https://sqrl-cmd.s3.us-west-2.amazonaws.com/sqrl-cli-v0.5.3.zip"
-  version "0.5.3"
-  sha256 "a48f30cc8a8dc2ed7ee2867cfe77c1243cdba72836792e2691410a3e538f4b90"
+  url "https://sqrl-cmd.s3.us-west-2.amazonaws.com/sqrl-cli-v0.5.4.zip"
+  version "0.5.4"
+  sha256 "f3069c0500454233ad81e213839497bcd253966fbb12480ae698a090c8ab445e"
   license ""
 
   depends_on "openjdk@11"
