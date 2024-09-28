@@ -28,7 +28,7 @@ class SqrlCli < Formula
         exit 1
       fi
 
-      if [[ "$1" == "login" ]]; then
+      if [[ "$1" == "login" || "$1" == "publish" ]]; then
         "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli-v0.5.5.jar" "$@"
       else
         # Check if Docker is installed
