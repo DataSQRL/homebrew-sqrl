@@ -1,39 +1,36 @@
 class SqrlCli < Formula
   desc "A SQRL compiler"
   homepage "https://datasqrl.com"
-  url "https://sqrl-cmd.s3.us-west-2.amazonaws.com/sqrl-cli-v0.5.4.zip"
-  version "0.5.4"
-  sha256 "f3069c0500454233ad81e213839497bcd253966fbb12480ae698a090c8ab445e"
+  version "0.5.5"
+  url "https://sqrl-cmd.s3.us-west-2.amazonaws.com/sqrl-cli-v0.5.5.zip", using: :nounzip
+  sha256 "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
   license ""
 
-  depends_on "openjdk@11"
-
   def install
-    libexec.mkpath
-    system "unzip", cached_download, "-d", libexec
+    # Create the bin directory if it doesn't exist
+    bin.mkpath
 
-    # Verify that the necessary files are present
-    unless File.exist?("#{libexec}/sqrl-cli.jar") && File.exist?("#{libexec}/sqrl-run.jar")
-      odie "Missing expected files in the zip"
-    end
-
+    # Write the sqrl script
     (bin/"sqrl").write <<~EOS
       #!/bin/bash
 
-      JVM_OPTS="${JVM_OPTS:-}"
-
-      "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli.jar" "$@"
-      status=$?
-
-      if [ "$1" = "run" ] && [ $status -eq 0 ]; then
-          exec "#{Formula["openjdk@11"].opt_bin}/java" $JVM_OPTS -jar "#{libexec}/sqrl-run.jar" "${@:2}"
+      # Check if Docker is installed
+      if ! command -v docker &> /dev/null; then
+        echo "Error: Docker is not installed or not in your PATH." >&2
+        exit 1
       fi
+
+      docker run -it -p 8888:8888 -p 8081:8081 -p 9092:9092 \\
+      --rm -v "$PWD":/build datasqrl/cmd:v0.5.5 "$@"
     EOS
 
-    (bin/"sqrl").chmod 0755
+    # Make the script executable
+    chmod 0755, bin/"sqrl"
   end
 
   test do
-    assert_match "v#{version}", shell_output("#{bin}/sqrl --version")
+    # Check that the script exists and is executable
+    assert_predicate bin/"sqrl", :exist?
+    assert_predicate bin/"sqrl", :executable?
   end
 end
