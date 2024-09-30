@@ -28,6 +28,9 @@ class SqrlCli < Formula
         exit 1
       fi
 
+      if [[ -f "$HOME/.datasqrl/auth" ]]; then
+        DATASQRL_TOKEN=$(cat "$HOME/.datasqrl/auth")
+      fi
       if [[ "$1" == "login" || "$1" == "publish" ]]; then
         "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli-v0.5.5.jar" "$@"
       else
@@ -38,7 +41,7 @@ class SqrlCli < Formula
         fi
 
         docker run -it -p 8888:8888 -p 8081:8081 -p 9092:9092 \\
-        --rm -v "$PWD":/build datasqrl/cmd:v0.5.5 "$@"
+        --rm -v "$PWD":/build -e DATASQRL_TOKEN="$DATASQRL_TOKEN" datasqrl/cmd:v0.5.5 "$@"
       fi
     EOS
 
