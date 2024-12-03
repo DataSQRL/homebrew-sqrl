@@ -1,9 +1,9 @@
 class SqrlCli < Formula
   desc "A SQRL compiler"
   homepage "https://datasqrl.com"
-  version "0.5.8"
-  url "https://sqrl-cmd.s3.us-west-2.amazonaws.com/sqrl-cli-v0.5.8.jar", using: :nounzip
-  sha256 "390446d7fd7144c1a9a84b3ffaae4a557af0eccb49063c647b44d3eae77aa5d7"
+  version "0.5.9"
+  url "https://sqrl-cmd.s3.us-west-2.amazonaws.com/sqrl-cli-v0.5.9.jar", using: :nounzip
+  sha256 "8481e98a89de1411329ae02f0b5b6b24f3cb0b4aab5a2658f59a67c56d5727fb"
   license ""
 
   depends_on "openjdk@11"
@@ -11,10 +11,10 @@ class SqrlCli < Formula
   def install
     # Create the bin directory if it doesn't exist
     bin.mkpath
-    libexec.install "sqrl-cli-v0.5.8.jar" unless File.exist?("#{libexec}/sqrl-cli-v0.5.8.jar")
+    libexec.install "sqrl-cli-v0.5.9.jar" unless File.exist?("#{libexec}/sqrl-cli-v0.5.9.jar")
 
     # Verify that the necessary files are present
-    unless File.exist?("#{libexec}/sqrl-cli-v0.5.8.jar")
+    unless File.exist?("#{libexec}/sqrl-cli-v0.5.9.jar")
       odie "Missing expected files"
     end
 
@@ -32,7 +32,7 @@ class SqrlCli < Formula
         DATASQRL_TOKEN=$(cat "$HOME/.datasqrl/auth")
       fi
       if [[ "$1" == "login" || "$1" == "publish" ]]; then
-        "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli-v0.5.8.jar" "$@"
+        "#{Formula["openjdk@11"].opt_bin}/java" -jar "#{libexec}/sqrl-cli-v0.5.9.jar" "$@"
       else
         # Check if Docker is installed
         if ! command -v docker &> /dev/null; then
@@ -41,7 +41,7 @@ class SqrlCli < Formula
         fi
 
         docker run -it -p 8888:8888 -p 8081:8081 -p 9092:9092 \\
-        --rm -v "$PWD":/build -e DATASQRL_TOKEN="$DATASQRL_TOKEN" datasqrl/cmd:v0.5.8 "$@"
+        --rm -v "$PWD":/build -e DATASQRL_TOKEN="$DATASQRL_TOKEN" datasqrl/cmd:v0.5.9 "$@"
       fi
     EOS
 
